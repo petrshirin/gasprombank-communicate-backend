@@ -21,4 +21,4 @@ class Department(models.Model):
 
 class Position(models.Model):
     name = models.CharField(max_length=255)
-    departament = models.ForeignKey(Department, on_delete=models.CASCADE)
+    department = models.ForeignKey(Department, on_delete=models.CASCADE)
