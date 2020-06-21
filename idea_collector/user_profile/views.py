@@ -12,8 +12,8 @@ class UserView(APIView):
             ser = UserProfileSerializer(user_profile)
             return Response({"data": ser.data}, status=200)
         else:
-            user_profile = UserProfile.objects.filter(user=request.user)
-            ser = UserProfileSerializer(user_profile, many=True)
+            user_profile = UserProfile.objects.filter(user=request.user).first()
+            ser = UserProfileSerializer(user_profile)
             return Response({"data": ser.data}, status=200)
 
     def post(self, request):

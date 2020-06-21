@@ -16,6 +16,14 @@ class IdeaSerializer(serializers.ModelSerializer):
     technologies = TechnologySerializer(many=True)  # serializers.PrimaryKeyRelatedField(queryset=Technology.objects.all(), many=True)
 
 
+class IdeaPostSerializer(serializers.Serializer):
+    title = serializers.CharField(max_length=255, min_length=5)
+    description = serializers.CharField(max_length=4096, min_length=50)
+    block = serializers.IntegerField(min_value=1)
+    functions = serializers.ListField(child=serializers.IntegerField(), allow_empty=True)
+    departments = serializers.ListField(child=serializers.IntegerField(), allow_empty=True)
+    technologies = serializers.ListField(child=serializers.IntegerField(), allow_empty=True)
+
 
 
 

@@ -15,10 +15,20 @@ class Idea(models.Model):
     title = models.CharField(max_length=255, unique=True)
     creator = models.ForeignKey(UserProfile, on_delete=models.CASCADE)
     description = models.TextField()
+
     block = models.ForeignKey(Block, on_delete=models.CASCADE)
     departments = models.ManyToManyField(Department, related_name='idea_departments')
     technologies = models.ManyToManyField(Technology, related_name='idea_technologies')
     functions = models.ManyToManyField(Function, related_name='idea_function')
 
+
+class Like(models.Model):
+    idea = models.ForeignKey(Idea, on_delete=models.CASCADE)
+    user = models.ForeignKey(UserProfile, on_delete=models.CASCADE)
+
+
+class DisLike(models.Model):
+    idea = models.ForeignKey(Idea, on_delete=models.CASCADE)
+    user = models.ForeignKey(UserProfile, on_delete=models.CASCADE)
 
 
